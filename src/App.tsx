@@ -66,11 +66,22 @@ table {
 `;
 
 export default function App() {
-  const [minutes, setMinutes] = useRecoilState(minutesState); //atom의 값을 더해서 atom을 수정할 함수까지 준다
-  const hours = useRecoilValue(hoursSelector);
+  const [minutes, setMinutes] = useRecoilState(minutesState); //atom의 값을 더해서 atom을 수정할 함수까지 준다 // 인풋에서 입력되는 값을 atom으로 전달한다.
+  //recoilState결과로 array를 주는데 첫번째 값은 atom에서 주는값이고 두번째는 atom을 수정하는 함수이다.
+  const [hours, setHours] = useRecoilState(hoursSelector); // atom에서 수정된 값을 가져온다.
+  //REcoilSelector도 State와 똑같이 수정을 할수가 있다. state를 recoilSelector로 사용하고 있다면 결과값으로 array를 받게 된다.
+  //첫번째 요소(hours)는 seltor에서 get함수에 return한 값이된다
+  //두번째는 set함수를 부르는 함수가 될거다.
+  //recoilstate는 atom으로 쓸수도 있고 selector로 쓸수도 있다.
+  //recoilstate를 selector로 사용할때 첫번째요소의값은 atom의값이거나 get함수의 값이다.
   const onMinutesChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setMinutes(+e.currentTarget.value); // atom에서 주는값은 숫자값인데 input 에서 넘겨주는값은 스트링이기 때문에 형변환을 해줘야한다.
+    setMinutes(+e.currentTarget.value); // input 에서 넘겨주는값은 스트링이기 때문에 형변환을 해줘야한다.
   };
+
+  const onHoursChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setHours(+e.currentTarget.value); // input 에서 넘겨주는값은 스트링이기 때문에 형변환을 해줘야한다.
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -80,7 +91,12 @@ export default function App() {
         onChange={onMinutesChange}
         placeholder="Minutes"
       ></input>
-      <input type={"number"} value={hours} placeholder="Hourse"></input>
+      <input
+        type={"number"}
+        onChange={onHoursChange}
+        value={hours}
+        placeholder="Hourse"
+      ></input>
     </>
   );
 }
