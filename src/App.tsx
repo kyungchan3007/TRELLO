@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Andika&family=Inter:wght@300;400&family=Mukta&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -64,9 +64,26 @@ table {
 `;
 
 export default function App() {
+  const onDragEnd = () => {};
   return (
     <>
-      <GlobalStyle />
+      <DragDropContext onDragEnd={onDragEnd}>
+        <GlobalStyle />
+        <div>
+          <Droppable droppableId="one">
+            {() => (
+              <ul>
+                <Draggable draggableId="first" index={0}>
+                  {() => <li>ONE</li>}
+                </Draggable>
+                <Draggable draggableId="second" index={1}>
+                  {() => <li>TWO</li>}
+                </Draggable>
+              </ul>
+            )}
+          </Droppable>
+        </div>
+      </DragDropContext>
     </>
   );
 }
