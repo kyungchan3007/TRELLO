@@ -17,3 +17,8 @@ export const hoursSelector = selector<number>({
     set(minutesState, minutes); // atom에서 받아 오는 값을 10으로 수정하겠다는 말이다.
   },
 });
+
+export const toDosState = atom({
+  key: "toDo",
+  default: ["a", "b", "c", "d", "e", "f"],
+});

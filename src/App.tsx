@@ -1,9 +1,26 @@
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from "react-beautiful-dnd";
+import { useRecoilState } from "recoil";
+import { toDosState } from "./atoms";
 import * as S from "./styleComponent/app.styled";
 
 export default function App() {
-  const toDos = ["a", "b", "e", "f"];
-  const onDragEnd = () => {};
+  // const x = ["a", "b", "c", "d", "e", "f"];
+
+  // const aaa = x.splice(0, 1);
+  // console.log(aaa, x);
+  // const ccc = x.splice(2, 0, "a");
+  // console.log(ccc, x);
+
+  const [toDos, SetTodo] = useRecoilState(toDosState);
+
+  const onDragEnd = (args: DropResult) => {
+    // args.destination?.
+  };
   return (
     <>
       {/* 드래그엔 드롭을 가능하게 하고 싶다면 DragDropContext를 사용해야한다* 가능할게 할수 있는 박스를 만든다 */}
