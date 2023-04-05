@@ -1,17 +1,48 @@
 import styled from "styled-components";
 
-export const Board = styled.div`
+export const Wrapper = styled.div`
+  display: flex;
+  max-width: 900px;
+  width: 100vw;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+export const BoardWrapper = styled.div`
+  width: 300px;
+  padding: 20px 10px;
+  padding-top: 10px;
   background-color: ${(props) => props.theme.boardColor};
-  padding: 2% 2%;
-  padding-top: 3%;
-  border-radius: 5px;
-  min-height: 200px;
+  border-radius: 10px;
+  min-height: 300px;
+`;
+
+export const Title = styled.h2`
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 18px;
 `;
 
 export const Boards = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  grid-template-columns: repeat(3, 1fr);
+`;
+
+export const Board = styled.div`
+  padding: 20px 10px;
+  padding-top: 30px;
+  background-color: ${(props) => props.theme.boardColor};
+  border-radius: 5px;
+  min-height: 200px;
+  width: 100%;
 `;
 
 export const Card = styled.div`
@@ -20,14 +51,4 @@ export const Card = styled.div`
   padding: 10px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-`;
-
-export const Warapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  height: 100vh;
 `;

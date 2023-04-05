@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { IToDoState } from "./types/draggableTyps";
 export const minutesState = atom({
   key: "minutes",
   default: 0,
@@ -18,7 +19,11 @@ export const hoursSelector = selector<number>({
   },
 });
 
-export const toDosState = atom({
+export const toDosState = atom<IToDoState>({
   key: "toDo",
-  default: ["a", "b", "c", "d", "e", "f"],
+  default: {
+    To_do: ["a", "b"],
+    Doing: ["c", "d", "e"],
+    Done: ["f"],
+  },
 });

@@ -1,9 +1,10 @@
 import React from "react";
-import { Draggable, Droppable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 import * as S from "../styleComponent/app.styled";
 import { dragaable } from "../types/draggableTyps";
 export function DraggablleCard(props: dragaable) {
   //해당 component의 모든 자식은 렌더링된다.
+  //부모에게 객체의 프로퍼티 값을 물려받는다.
   return (
     <>
       <Draggable
