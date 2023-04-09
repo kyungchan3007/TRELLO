@@ -12,3 +12,8 @@ export interface IBoard {
 export interface IToDoState {
   [key: string]: string[];
 }
+
+export interface IAreaProps {
+  isDraggingFromThis: boolean;
+  isDraggingOver: boolean;
+}

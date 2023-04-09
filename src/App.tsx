@@ -24,7 +24,7 @@ export default function App() {
       //더이상 배열이 아니기 때문에 배열복사가 불가능하다
       //변화가 일어난 속성에 대해서만 복사한다.
       setTodo((oldToDos) => {
-        const boardCopy = [...oldToDos[source.droppableId]]; //source.droppableId 카드의 index가 변경되기전 === 시작점id
+        const boardCopy = [...oldToDos[source.droppableId]]; //source.droppableId는 카드의 시작점id
         //1. 값의 index 에서 아이템을 지움
         // sourece.index 현재 item의 index!
         boardCopy.splice(source.index, 1);

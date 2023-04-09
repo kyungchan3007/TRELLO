@@ -12,14 +12,19 @@ export default function BoardCard(props: IBoard) {
       <S.Title>{props.boardId}</S.Title>
       <Droppable droppableId={props.boardId}>
         {/* magic은 Droppable 에 주는 provided다 뭐.. 변수이름은 개발자 마음대로 해도상관없다*/}
-        {(magic) => (
-          <S.Board ref={magic.innerRef} {...magic.droppableProps}>
+        {(magic, info) => (
+          <S.Area
+            isDraggingOver={info.isDraggingOver}
+            isDraggingFromThis={Boolean(info.draggingFromThisWith)}
+            ref={magic.innerRef}
+            {...magic.droppableProps}
+          >
             {/*Droppable 영역에서 드래그 하는박스(영역)*/}
             {props.toDos.map((el, i) => (
               <DraggablleCard key={el} toDos={el} index={i} />
             ))}
             {magic.placeholder}
-          </S.Board>
+          </S.Area>
         )}
       </Droppable>
     </S.BoardWrapper>
