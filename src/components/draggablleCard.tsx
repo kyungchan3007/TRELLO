@@ -15,8 +15,9 @@ export function DraggablleCard(props: dragaable) {
         {/*유저가 li를 어떠한 위치에서든지 드레그해서 옮기도록 하고 싶다면 
            draggableProps,dragHandleProps , 
            key 값과 draggabledId 값이 동일해야한다*/}
-        {(magic) => (
+        {(magic, snapshot) => (
           <S.Card
+            isDragging={snapshot.isDragging}
             ref={magic.innerRef}
             {...magic.dragHandleProps}
             {...magic.draggableProps}

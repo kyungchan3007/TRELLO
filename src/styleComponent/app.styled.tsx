@@ -12,8 +12,7 @@ export const Wrapper = styled.div`
 
 export const BoardWrapper = styled.div`
   width: 300px;
-  padding: 20px 10px;
-  padding-top: 10px;
+  padding-top: 20px;
   background-color: ${(props) => props.theme.boardColor};
   border-radius: 10px;
   min-height: 300px;
@@ -39,18 +38,18 @@ export const Boards = styled.div`
 `;
 
 // isDraggingOver => 변경될 카드선택 여부
-// isDraggingFromThis => 카드각 박스권에서 떠날때
+// isDraggingFromThis => 카드가 박스권에서 떠날때
 export const Area = styled.div<IAreaProps>`
   background-color: ${(props) =>
-    props.isDraggingOver ? "pink" : props.isDraggingFromThis ? "red" : "blue"};
+    props.isDraggingOver
+      ? "#ecf0f1"
+      : props.isDraggingFromThis
+      ? "#7f8c8d"
+      : "transparent"};
   flex-grow: 1;
   transition: background-color 0.3s ease-in-out;
+  padding: 20px;
 `;
-
-// export const Area = styled.div`
-//   background-color: blue;
-//   flex-grow: 1;
-// `;
 
 export const Board = styled.div`
   padding: 20px 10px;
@@ -61,10 +60,13 @@ export const Board = styled.div`
   width: 100%;
 `;
 
-export const Card = styled.div`
-  background-color: ${(props) => props.theme.cardColor};
+export const Card = styled.div<{ isDragging: boolean }>`
+  background-color: ${(props) =>
+    props.isDragging ? "#2980b9" : props.theme.cardColor};
   width: 100%;
   padding: 10px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  box-shadow: ${(props) =>
+    props.isDragging ? "0px 2px 25px rgba(0, 0, 0, 0.5)" : "none"};
 `;
